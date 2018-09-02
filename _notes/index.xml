@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>_notes on Bunk Thoughts</title>
+    <link>/_notes/</link>
+    <description>Recent content in _notes on Bunk Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/_notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/_notes/k8s-conversion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/_notes/k8s-conversion/</guid>
+      <description>Ingress Controller View the Kubernetes UI $ az aks browse --resource-group bunk_aks --name bunk-aks Install the Traefik helm chart $ helm install \ --name traefik stable/traefik \ --namespace kube-system \ --values ./traefik.yaml Watch it generate a TLS cert time=&amp;#34;2018-07-21T21:08:11Z&amp;#34; level=info msg=&amp;#34;Using TOML configuration file /config/traefik.toml&amp;#34; time=&amp;#34;2018-07-21T21:08:11Z&amp;#34; level=warning msg=&amp;#34;web provider configuration is deprecated, you should use these options : api, rest provider, ping and metrics&amp;#34; time=&amp;#34;2018-07-21T21:08:11Z&amp;#34; level=info msg=&amp;#34;Traefik version v1.6.2 built on 2018-05-22_03:19:06PM&amp;#34; time=&amp;#34;2018-07-21T21:08:11Z&amp;#34; level=info msg=&amp;#34;\nStats collection is disabled.</description>
+    </item>
+    
+  </channel>
+</rss>

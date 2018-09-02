@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bunk Thoughts</title>
+    <link>/</link>
+    <description>Recent content on Bunk Thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Aug 2018 15:19:12 -0500</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>This is a title</title>
+      <link>/posts/this-is-a-title/</link>
+      <pubDate>Sun, 26 Aug 2018 15:19:12 -0500</pubDate>
+      
+      <guid>/posts/this-is-a-title/</guid>
+      <description>So um&amp;hellip; yeah
+199 200 201 202  FROMklakegg/hugo:ext-alpine-onbuild AS hugoFROMnginxCOPY --from=hugo /onbuild /usr/share/nginx/html   FROMklakegg/hugo:ext-alpine-onbuild AS hugoFROMnginxCOPY --from=hugo /onbuild /usr/share/nginx/htmlbaseUrl = &amp;#34;https://example.com&amp;#34; languageCode = &amp;#34;en&amp;#34; title = &amp;#34;Hemingway&amp;#34; theme = &amp;#34;hemingway&amp;#34; copyright = &amp;#34;© &amp;lt;a href=&amp;#34;https://github.com/tanksuzuki&amp;#34;&amp;gt;Asuka Suzuki&amp;lt;/a&amp;gt; 2016&amp;#34; disqusShortname = &amp;#34;shortname&amp;#34; googleAnalytics = &amp;#34;&amp;#34; [params] [params.highlight] style = &amp;#34;github&amp;#34; languages = [&amp;#34;go&amp;#34;, &amp;#34;dockerfile&amp;#34;] [[params.social]] url = &amp;#34;https://github.com/tanksuzuki&amp;#34; fa_icon = &amp;#34;fa-github&amp;#34; [[params.social]] url = &amp;#34;https://twitter.com/tanksuzuki&amp;#34; fa_icon = &amp;#34;fa-twitter&amp;#34; [[params.social]] url = &amp;#34;/index.</description>
+    </item>
+    
+    <item>
+      <title>Creating a New Theme</title>
+      <link>/posts/creating-a-new-theme/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/creating-a-new-theme/</guid>
+      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/_notes/k8s-conversion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/_notes/k8s-conversion/</guid>
+      <description>Ingress Controller View the Kubernetes UI $ az aks browse --resource-group bunk_aks --name bunk-aks Install the Traefik helm chart $ helm install \ --name traefik stable/traefik \ --namespace kube-system \ --values ./traefik.yaml Watch it generate a TLS cert time=&amp;#34;2018-07-21T21:08:11Z&amp;#34; level=info msg=&amp;#34;Using TOML configuration file /config/traefik.toml&amp;#34; time=&amp;#34;2018-07-21T21:08:11Z&amp;#34; level=warning msg=&amp;#34;web provider configuration is deprecated, you should use these options : api, rest provider, ping and metrics&amp;#34; time=&amp;#34;2018-07-21T21:08:11Z&amp;#34; level=info msg=&amp;#34;Traefik version v1.6.2 built on 2018-05-22_03:19:06PM&amp;#34; time=&amp;#34;2018-07-21T21:08:11Z&amp;#34; level=info msg=&amp;#34;\nStats collection is disabled.</description>
+    </item>
+    
+  </channel>
+</rss>

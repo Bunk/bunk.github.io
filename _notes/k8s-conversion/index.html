@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="JD Courtoy">
+    <meta name="description" content="JD Courtoy&#39;s online presence">
+    <meta name="keywords" content="jd,courtoy,blog,developer,personal">
+
+    <base href="/">
+    <title>
+   · Bunk Thoughts
+</title>
+
+    <link rel="canonical" href="/_notes/k8s-conversion/">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Condensed">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.4f06c78a1d5482951d9cff6f0aac02967ea6346856893d733f7c358b20557c92.css" integrity="sha256-TwbHih1UgpUdnP9vCqwCln6mNGhWiT1zP3w1iyBVfJI=" media="screen">
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+
+    <meta name="generator" content="Hugo 0.48" />
+  </head>
+
+  <body>
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Bunk Thoughts
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="/resume/">Resume</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1></h1>
+    </header>
+
+    
+
+<h3 id="ingress-controller">Ingress Controller</h3>
+
+<h4 id="view-the-kubernetes-ui">View the Kubernetes UI</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ az aks browse --resource-group bunk_aks --name bunk-aks</pre></div>
+<h4 id="install-the-traefik-helm-chart">Install the Traefik helm chart</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ helm install \
+    --name traefik stable/traefik \
+    --namespace kube-system \
+    --values ./traefik.yaml</pre></div>
+<h4 id="watch-it-generate-a-tls-cert">Watch it generate a TLS cert</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Using TOML configuration file /config/traefik.toml&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=warning msg=&#34;web provider configuration is deprecated, you should use these options : api, rest provider, ping and metrics&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Traefik version v1.6.2 built on 2018-05-22_03:19:06PM&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;\nStats collection is disabled.\nHelp us improve Traefik by turning this feature on :)\nMore details on: https://docs.traefik.io/basics/#collected-data\n&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Preparing server https &amp;amp;{Address::443 TLS:0xc42034e380 Redirect:&amp;lt;nil&amp;gt; Auth:&amp;lt;nil&amp;gt; WhitelistSourceRange:[] WhiteList:&amp;lt;nil&amp;gt; Compress:true ProxyProtocol:&amp;lt;nil&amp;gt; ForwardedHeaders:0xc420406f00} with readTimeout=0s writeTimeout=0s idleTimeout=3m0s&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Preparing server traefik &amp;amp;{Address::8080 TLS:&amp;lt;nil&amp;gt; Redirect:&amp;lt;nil&amp;gt; Auth:&amp;lt;nil&amp;gt; WhitelistSourceRange:[] WhiteList:&amp;lt;nil&amp;gt; Compress:false ProxyProtocol:&amp;lt;nil&amp;gt; ForwardedHeaders:0xc420406f20} with readTimeout=0s writeTimeout=0s idleTimeout=3m0s&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Preparing server http &amp;amp;{Address::80 TLS:&amp;lt;nil&amp;gt; Redirect:0xc42062c640 Auth:&amp;lt;nil&amp;gt; WhitelistSourceRange:[] WhiteList:&amp;lt;nil&amp;gt; Compress:true ProxyProtocol:&amp;lt;nil&amp;gt; ForwardedHeaders:0xc4204069c0} with readTimeout=0s writeTimeout=0s idleTimeout=3m0s&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Starting provider configuration.providerAggregator {}&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Starting server on :443&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Starting server on :8080&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Starting server on :80&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Starting provider *kubernetes.Provider {\&#34;Watch\&#34;:true,\&#34;Filename\&#34;:\&#34;\&#34;,\&#34;Constraints\&#34;:[],\&#34;Trace\&#34;:false,\&#34;TemplateVersion\&#34;:0,\&#34;DebugLogGeneratedTemplate\&#34;:false,\&#34;Endpoint\&#34;:\&#34;\&#34;,\&#34;Token\&#34;:\&#34;\&#34;,\&#34;CertAuthFilePath\&#34;:\&#34;\&#34;,\&#34;DisablePassHostHeaders\&#34;:false,\&#34;EnablePassTLSCert\&#34;:false,\&#34;Namespaces\&#34;:null,\&#34;LabelSelector\&#34;:\&#34;\&#34;,\&#34;IngressClass\&#34;:\&#34;\&#34;}&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Starting provider *acme.Provider {\&#34;Email\&#34;:\&#34;jd@courtoy.io\&#34;,\&#34;ACMELogging\&#34;:true,\&#34;CAServer\&#34;:\&#34;https://acme-staging-v02.api.letsencrypt.org/directory\&#34;,\&#34;Storage\&#34;:\&#34;/acme/acme.json\&#34;,\&#34;EntryPoint\&#34;:\&#34;https\&#34;,\&#34;OnHostRule\&#34;:true,\&#34;OnDemand\&#34;:false,\&#34;DNSChallenge\&#34;:null,\&#34;HTTPChallenge\&#34;:{\&#34;EntryPoint\&#34;:\&#34;http\&#34;},\&#34;Domains\&#34;:null,\&#34;Store\&#34;:{}}&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Testing certificate renew...&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;ingress label selector is: \&#34;\&#34;&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Creating in-cluster Provider client&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Server configuration reloaded on :80&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Server configuration reloaded on :443&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Server configuration reloaded on :8080&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Server configuration reloaded on :80&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Server configuration reloaded on :443&#34;
+time=&#34;2018-07-21T21:08:11Z&#34; level=info msg=&#34;Server configuration reloaded on :8080&#34;
+legolog: 2018/07/21 21:08:12 [INFO][edge.courtoy.io] acme: Obtaining bundled SAN certificate
+legolog: 2018/07/21 21:08:13 [INFO][edge.courtoy.io] AuthURL: https://acme-staging-v02.api.letsencrypt.org/acme/authz/v1Rjta7XKpMrRv7OW_cfb9TCugh_YhReEUXnr4x2820
+legolog: 2018/07/21 21:08:13 [INFO][edge.courtoy.io] acme: Trying to solve HTTP-01
+time=&#34;2018-07-21T21:08:18Z&#34; level=error msg=&#34;Unable to obtain ACME certificate for domains \&#34;edge.courtoy.io\&#34; detected thanks to rule \&#34;Host:edge.courtoy.io\&#34; : cannot obtain certificates: acme: Error -&amp;gt; One or more domains had a problem:\n[edge.courtoy.io] acme: Error 400 - urn:ietf:params:acme:error:connection - Fetching http://edge.courtoy.io/.well-known/acme-challenge/Wsn3Trn-wAMsaLcLAw1Br1Vb5mvD6guK3hSWT5t0pQ0: Timeout during connect (likely firewall problem)\n&#34;
+legolog: 2018/07/21 21:08:27 [INFO][edge.courtoy.io] acme: Obtaining bundled SAN certificate
+time=&#34;2018-07-21T21:08:27Z&#34; level=info msg=&#34;Server configuration reloaded on :443&#34;
+time=&#34;2018-07-21T21:08:27Z&#34; level=info msg=&#34;Server configuration reloaded on :8080&#34;
+time=&#34;2018-07-21T21:08:27Z&#34; level=info msg=&#34;Server configuration reloaded on :80&#34;
+legolog: 2018/07/21 21:08:27 [INFO][edge.courtoy.io] AuthURL: https://acme-staging-v02.api.letsencrypt.org/acme/authz/v3y7VacGCCNlhcWTfBQ6Cqq-CAUQlXiZomRRK4SWtu0
+legolog: 2018/07/21 21:08:27 [INFO][edge.courtoy.io] acme: Could not find solver for: dns-01
+legolog: 2018/07/21 21:08:27 [INFO][edge.courtoy.io] acme: Could not find solver for: tls-alpn-01
+legolog: 2018/07/21 21:08:27 [INFO][edge.courtoy.io] acme: Trying to solve HTTP-01
+legolog: 2018/07/21 21:08:38 [INFO][edge.courtoy.io] The server validated our request
+legolog: 2018/07/21 21:08:38 [INFO][edge.courtoy.io] acme: Validations succeeded; requesting certificates</pre></div>
+<h4 id="upgrade-the-release-w-production-tls-certs">Upgrade the release w/ production TLS certs</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ helm upgrade -f ./traefik.yaml traefik stable/traefik
+Release &#34;traefik&#34; has been upgraded. Happy Helming!
+LAST DEPLOYED: Sat Jul 21 16:17:52 2018
+NAMESPACE: kube-system
+STATUS: DEPLOYED
+
+RESOURCES:
+==&gt; v1/PersistentVolumeClaim
+NAME          STATUS  VOLUME                                    CAPACITY  ACCESS MODES  STORAGECLASS  AGE
+traefik-acme  Bound   pvc-f77d59e5-8d27-11e8-bf9a-0a58ac1f0757  1Gi       RWO           default       25m
+
+==&gt; v1/Service
+NAME               TYPE          CLUSTER-IP    EXTERNAL-IP     PORT(S)                     AGE
+traefik-dashboard  ClusterIP     10.0.69.166   &lt;none&gt;          80/TCP                      25m
+traefik            LoadBalancer  10.0.244.156  137.117.43.115  80:32501/TCP,443:31509/TCP  25m
+
+==&gt; v1beta1/Deployment
+NAME     DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+traefik  1        1        1           0          25m
+
+==&gt; v1beta1/Ingress
+NAME               HOSTS            ADDRESS  PORTS  AGE
+traefik-dashboard  edge.courtoy.io  80       25m
+
+==&gt; v1/Pod(related)
+NAME                      READY  STATUS             RESTARTS  AGE
+traefik-686df4796c-fs2zd  1/1    Terminating        0         9m
+traefik-76f8b455c8-6zqph  0/1    ContainerCreating  0         1s
+
+==&gt; v1/Secret
+NAME                  TYPE    DATA  AGE
+traefik-default-cert  Opaque  2     25m
+
+==&gt; v1/ConfigMap
+NAME     DATA  AGE
+traefik  1     25m
+
+$ helm history traefik
+REVISION	UPDATED                 	STATUS    	CHART         	DESCRIPTION
+1       	Sat Jul 21 15:52:22 2018	SUPERSEDED	traefik-1.35.0	Install complete
+2       	Sat Jul 21 16:01:16 2018	SUPERSEDED	traefik-1.35.0	Upgrade complete
+3       	Sat Jul 21 16:17:52 2018	DEPLOYED  	traefik-1.35.0	Upgrade complete</pre></div>
+<h3 id="resume-chart">Resume Chart</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ helm lint ./resume-chart
+==&gt; Linting ./resume-chart
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, no failures</pre></div>
+  </article>
+</section>
+
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>Hai ya.</p>
+    
+     © 2018  
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>
